@@ -8,7 +8,6 @@
 function sum(a) {
   let sum = 0; //변수 sum을 0으로 선언
   for (let number of a) {
-    // param a에 number 변수 선언
     sum += number; // sum = sum+number
   }
   return sum; //a에 포함되어있는 정수 n개의 값 ↓
