@@ -33,12 +33,12 @@ cars.forEach((car) => {
 //forEach : 결론적으로 array에 있는 것. proto type.
 const array1 = ["a", "b", "c"];
 
-array1.forEach((element) => console.log(element)); // (element => console.log(element)); 이 부분이 function //
+array1.forEach((element, i) => console.log(element)); // (element => console.log(element)); 이 부분이 function //
 
 //Arrow Function
-let arrowFunction = (element) => {
+let arrowFunction = (element, index) => {
   //param이 하나일때는 괄호를 뺌..두 개 이상부터 꼭 괄호 넣어야함
-  console.log(element);
+  console.log(`${element}, ${index}`);
   //리턴하는게 만약 하나일때는 {}를 안써줌.(지금은 없지만..)
 };
 array1.forEach(arrowFunction);

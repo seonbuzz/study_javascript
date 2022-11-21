@@ -101,7 +101,7 @@ for (let i = 0; i < questions.length; i++) {
   console.log(`답) ${input[i]}`);
 }
 
-// questions.forEach(() => console.log(answer1));
+// questions.forEach(() => console.log(answers));
 
 // for (let key of questions) {
 //   console.log(`${key} : ${question[key]}`);

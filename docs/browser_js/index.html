@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3 onclick="alert('alert window!')">Index</h3>
+    <h3 onclick="window.close('윈도우를 닫습니다.')">Close</h3>
+    <!-- onclick : js의 기능을 가져온 것 -->
+    <h3 id="selector">selector</h3>
+    <script>
+      const animals = ["dog", "cat", "bird", "fish", "lizard"];
+
+      //Normal
+      for (let i = 1; i < animals.length; i++) {
+        console.log(`${animals[i]}`);
+      }
+
+      //for iterable
+      //for문 내부에서 사용하려고 만들어지는 변수
+      //for(let 변수 이름 of animals){
+
+      for (let animal of animals) {
+        console.log(`${animal}`);
+      }
+    </script>
+  </body>
+</html>
