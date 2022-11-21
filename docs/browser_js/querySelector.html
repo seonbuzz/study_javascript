@@ -33,14 +33,16 @@
       queryBody.forEach((body) => {
         console.log(body);
       });
+
       //list , item 각각 출력
+
       let queryLists = document.querySelectorAll(".list");
       queryLists.forEach((list, index) => {
         console.log(index, list);
-      });
-      let queryItems = document.querySelectorAll(".item");
-      queryItems.forEach((item, index) => {
-        console.log(index, item);
+        let queryItems = document.querySelectorAll(".item");
+        queryItems.forEach((item, index) => {
+          console.log(index, item);
+        });
       });
     </script>
   </body>
