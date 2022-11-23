@@ -26,5 +26,5 @@ let queryData = document.querySelector("#list");
 
 productsData.forEach((product) => {
   let item2 = `<div>title : ${product.title}, weight : ${product.weight}</div>`;
-  snacklist.innerHTML += item2;
+  queryData.innerHTML += item2;
 });
