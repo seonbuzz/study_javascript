@@ -13,6 +13,7 @@
 
     <p id="title">DOM</p>
     <button id="btn">Click Me</button>
+
     <ul class="list">
       <li class="item">Apple</li>
       <li class="item">Azue</li>
@@ -34,14 +35,15 @@
         console.log(body);
       });
 
-      //list , item 각각 출력
-
+      //   list , item 각각 출력
       let queryLists = document.querySelectorAll(".list");
       queryLists.forEach((list, index) => {
-        console.log(index, list);
+        console.log(`${index}, ${list.outerHTML}`);
+        // list.querySelectorAll(".item");
+        //  위와 같은 내용  => queryLists[0].querySelectorAll(".item");
         let queryItems = document.querySelectorAll(".item");
         queryItems.forEach((item, index) => {
-          console.log(index, item);
+          console.log(`${index}, ${item.outerHTML}`);
         });
       });
     </script>
