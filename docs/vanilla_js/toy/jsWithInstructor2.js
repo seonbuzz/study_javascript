@@ -223,3 +223,5 @@ function setPollContentPrev() {
   queryContent.innerHTML = desc;
   index--;
 }
+
+//Debuging 문제
