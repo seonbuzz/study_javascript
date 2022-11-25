@@ -119,23 +119,105 @@ for (let idx = 0; idx < questions_answers.length; idx++) {
 //polls[0]['answer_uid'][0]
 //polls[0]['answer_uid'][1] ...
 
-//설문 문항을 가져오는 function
+// 설문 문항을 가져오는 function
+// Q1. 해당 매장을 방문시 매장은 청결 하였습니까?
+// 1. E1
+// 2. E2
+// Q2. 주문시 직원은 고객님께 친절 하였습니까?
+// ...
 
 function getQuestionByUid(question_uid) {
-  let question_desc;
-  for (question_list of questions_list) {
-    if (question_list["question_uid"] == question_uid) {
-      question_desc = question_list["question"];
+  // questions_uid = 'Q1'
+  let question_desc = "";
+  for (question of questions_list) {
+    if (question["questions_uid"] === question_uid) {
+      question_desc = question["question"];
+      break;
     }
   }
-
   return question_desc;
 }
+
+function getAnswerByUid(answer_uid) {
+  let answer_desc = "";
+  for (answer of answer_list) {
+    if (answer["answer_uid"] === answer_uid) {
+      //===는 data type도 비교 가능
+      answer_desc = answer["answer"];
+      break;
+    }
+  }
+  return answer_desc;
+}
+
 for (poll of polls) {
-  console.log(`${poll["questions_uid"]}`); // ==polls[idx]
+  let question_desc = getQuestionByUid(poll["questions_uid"]);
+  // console.log(`${poll["questions_uid"]}. ${question_desc}`); // == polls[idx]
   let answer_uids = poll["answer_uids"];
   answer_uids.forEach((answer_uid, index) => {
-    //answers
-    console.log(`${index + 1}.${answer_uid}`);
+    // answers
+    // console.log(`${index + 1}. ${getAnswerByUid(answer_uid)}`);
   });
+}
+
+// Event handlers
+// Next 클릭 시 순서 있게 설문 표시
+
+// 대상 변수는 polls
+let queryNext = document.querySelector("#next");
+queryNext.addEventListener("click", setPollContentNext);
+
+let queryPrev = document.querySelector("#prev");
+queryPrev.addEventListener("click", setPollContentPrev);
+
+let index = 0;
+
+//Next button desc
+function setPollContentNext() {
+  if (index > 4) {
+    alert("설문 조사가 끝났습니다.");
+  }
+
+  let queryContent = document.querySelector("#poll-contents");
+  // polls[0]["questions_uid"]; // 설문 문항
+  // polls[0]["answer_uids"]; // 설문 답항 묶음
+
+  //1.매장 상태가 좋은가요?
+  //(1). 예
+  //(2). 아니다
+  // console.log(getQuestionByUid(polls[index]["questions_uid"]));
+  let desc = `<div>${index + 1}.${getQuestionByUid(
+    polls[index]["questions_uid"]
+  )}<div>`;
+  polls[index]["answer_uids"].forEach((answer_uid, index) => {
+    //답항
+    // console.log(`${index + 1}. ${getAnswerByUid(answer_uid)}`);
+    desc =
+      desc +
+      `<div><input type="radio" name="answer" id=${
+        polls[index]["questions_uid"]
+      }></input>(${index + 1}). ${getAnswerByUid(answer_uid)}</div>`;
+  });
+  queryContent.innerHTML = desc;
+  index++;
+}
+
+//Prev Button desc
+function setPollContentPrev() {
+  if (index === 1) {
+    alert("이전 항목이 없습니다.");
+  }
+  let queryContent = document.querySelector("#poll-contents");
+  let desc = `<div>${index - 1}.${getQuestionByUid(
+    polls[index - 2]["questions_uid"]
+  )}<div>`;
+  polls[index - 2]["answer_uids"].forEach((answer_uid, index) => {
+    desc =
+      desc +
+      `<div><input type="radio" name="answer" id=${
+        polls[index]["questions_uid"]
+      }></input>(${index + 1}). ${getAnswerByUid(answer_uid)}</div>`;
+  });
+  queryContent.innerHTML = desc;
+  index--;
 }
