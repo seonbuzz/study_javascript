@@ -1,6 +1,7 @@
 .wrap {
   border: 1px solid gray;
   padding: 10px;
+  height: 50%;
   width: 30%;
   float: left;
   margin: 5px;
@@ -16,8 +17,9 @@
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  padding: 10px;
 }
 
-.container1 {
+/* .container1 {
   display: block;
-}
+} */
