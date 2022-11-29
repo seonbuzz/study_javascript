@@ -12,3 +12,26 @@ function singleEvent(event) {
   querySingle.innerHTML = "Take One Event!";
 }
 //하나의 엘리먼트에 하나의 이벤트만 줄 수 있는게 아님! 여러가지 가능
+
+let queryKeydown = document.querySelector("#keydown");
+
+queryKeydown.addEventListener("keydown", (event) => {
+  console.log(event);
+  if (event.code == "Enter") {
+    keydownDesc(queryKeydown.value);
+  }
+  console.log(event.target);
+});
+
+function keydownDesc(desc) {
+  //   let desc = queryKeydown.value;
+  let queryKeydownDesc = document.querySelector("#keydownDesc");
+  queryKeydownDesc.innerHTML = desc;
+}
+
+let queryLoad = document.querySelector("#keydownDesc");
+queryLoad.addEventListener("load", queryload());
+
+function queryload() {
+  queryLoad.innerHTML = "Done on Load";
+}
